@@ -1,0 +1,51 @@
+Kubernetes — also known as “k8s” or “kube” — is a container orchestration 
+platform for scheduling and automating the deployment, management, and 
+scaling of containerized applications.
+
+Orchestration is the coordination and management of multiple computer systems, 
+applications and/or services, stringing together multiple tasks in order to 
+execute a larger workflow or process.
+
+Kubernetes was first developed by engineers at Google before being open 
+sourced in 2014. It is a descendant of Borg, a container orchestration 
+platform used internally at Google. Kubernetes is Greek for helmsman or 
+pilot, hence the helm in the Kubernetes logo.
+
+An organization might have hundreds or thousands of containers — operations teams 
+needed to schedule and automate container deployment, networking, scalability, 
+and availability. And so, the container orchestration market was born.
+
+What does Kubernetes do?
+    Kubernetes schedules and automates container-related tasks throughout the 
+    application lifecycle, including:
+
+    Deployment: Deploy a specified number of containers to a specified host and 
+    keep them running in a desired state.
+
+    Rollouts: A rollout is a change to a deployment. Kubernetes lets you 
+    initiate, pause, resume, or roll back rollouts.
+
+    Service discovery: Kubernetes can automatically expose a container to the 
+    internet or to other containers using a DNS name or IP address.
+
+    Storage provisioning: Set Kubernetes to mount persistent local or cloud 
+    storage for your containers as needed.
+
+    Load balancing: Based on CPU utilization or custom metrics, Kubernetes 
+    load balancing can distribute the workload across the network to maintain 
+    performance and stability. 
+
+    Autoscaling: When traffic spikes, Kubernetes autoscaling can spin up new 
+    clusters as needed to handle the additional workload.
+
+    Self-healing for high availability: When a container fails, Kubernetes can 
+    restart or replace it automatically to prevent downtime. It can also 
+    take down containers that don’t meet your health-check requirements.
+
+K8s alternatives 
+    Docker Swarm
+    Nomad
+    Rancher
+    Amazon EKS
+    Azure Kubernetes Service
+    Google Kubernetes Engine
