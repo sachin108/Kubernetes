@@ -1,0 +1,32 @@
+A working Kubernetes deployment is called a cluster. You can visualize a 
+Kubernetes cluster as two parts: the control plane and the compute machines, 
+or nodes.
+
+**Each node is its own Linux® environment, and could be either a physical or 
+virtual machine. Each node runs pods, which are made up of containers.**
+
+The control plane is responsible for maintaining the desired state of the 
+cluster, such as which applications are running and which container images 
+they use. Compute machines actually run the applications and workloads.
+
+Kubernetes runs on top of an operating system and interacts with pods of 
+containers running on the nodes.
+
+The Kubernetes control plane takes the commands from an administrator 
+and relays those instructions to the compute machines.
+
+This handoff works with a multitude of services to automatically decide 
+which node is best suited for the task. It then allocates resources and 
+assigns the pods in that node to fulfill the requested work.
+
+The desired state of a Kubernetes cluster defines which applications or 
+other workloads should be running, along with which images they use, which 
+resources should be made available to them, and other such configuration details.
+
+Your work involves configuring Kubernetes and defining nodes, pods, and 
+the containers within them. Kubernetes handles orchestrating the containers.
+
+Where you run Kubernetes is up to you. This can be on bare metal servers, 
+virtual machines, public cloud providers, private clouds, and hybrid cloud 
+environments. One of Kubernetes’ key advantages is it works on many 
+different kinds of infrastructure.

@@ -1,0 +1,107 @@
+Kubernetes’s architecture makes use of various concepts and abstractions. 
+
+    Clusters and nodes (compute)
+        Clusters are the building blocks of Kubernetes architecture. The clusters 
+        are made up of nodes, each of which represents a single compute host 
+        (virtual or physical machine).
+
+        Each cluster consists of a master node that serves as the control 
+        plan for the cluster, and multiple worker nodes that deploy, run, and 
+        manage containerized applications. The master node runs a scheduler service 
+        that automates when and where the containers are deployed based on 
+        developer-set deployment requirements and available computing capacity. 
+        Each worker node includes the tool that is being used to manage the containers — 
+        such as Docker — and a software agent called a Kubelet that receives and 
+        executes orders from the master node.
+
+        Developers manage cluster operations using kubectl, a command-line 
+        interface (cli) that communicates directly with the Kubernetes API. 
+
+    Pods and deployments (software)
+        Pods are groups of containers that share the same compute resources 
+        and the same network. They are also the unit of scalability in 
+        Kubernetes: if a container in a pod is getting more traffic than it can 
+        handle, Kubernetes will replicate the pod to other nodes in the cluster. 
+        For this reason, it’s a good practice to keep pods compact so that they 
+        contain only containers that must share resources.
+
+        The deployment controls the creation and state of the containerized 
+        application and keeps it running. It specifies how many replicas of a 
+        pod should run on the cluster. If a pod fails, the deployment will 
+        create a new one.
+        
+        Nodes run pods, the most basic K8s objects that can be created or managed. 
+        Each pod represents a single instance of an application or running process in 
+        K8s, and consists of one or more containers. K8s starts, stops, and replicates 
+        all containers in a pod as a group. 
+
+        Pods are created and destroyed on nodes as needed to conform to the 
+        desired state specified by the user in the pod definition. K8s provides 
+        an abstraction called a controller for dealing with the logistics of 
+        how pods are spun up, rolled out, and spun down. Controllers come in a 
+        few different flavors depending on the kind of application being managed. 
+        For instance, the StatefulSet controller is used to deal with applications 
+        that need persistent state. The Deployment controller is used to scale an 
+        app up or down, update an app to a new version, or roll back an app to a 
+        known-good version if there’s a problem.
+
+    K8s services
+        Because pods live and die as needed, we need a different abstraction for 
+        dealing with the application lifecycle. An application is supposed to be 
+        a persistent entity, even when the pods running the containers that 
+        comprise the application aren’t themselves persistent. To that end, 
+        K8s provides an abstraction called a service.
+
+    A service in K8s describes how a given group of pods (or other K8s 
+    objects) can be accessed via the network. The pods that constitute the 
+    back-end of an application might change, but the front-end shouldn’t 
+    have to know about that or track it. Services make this possible.
+
+    The scheduler parcels out workloads to nodes so that they’re balanced 
+    across resources and so that deployments meet the requirements of the 
+    application definitions. The controller manager ensures that the state 
+    of the system—applications, workloads, etc.—matches the desired state 
+    defined in Etcd’s configuration settings.
+
+    K8s policies
+        Policies in K8s ensure that pods adhere to certain standards of behavior. 
+        Policies prevent pods from using excessive CPU, memory, process IDs, or 
+        disk space, for example. Such “limit ranges” are expressed in relative 
+        terms for CPU (e.g., 50% of a hardware thread) and absolute terms for 
+        memory (e.g., 200MB). These limits can be combined with resource quotas 
+        to ensure that different teams of K8s users (as opposed to applications 
+        generally) have equal access to resources.
+
+    K8s Ingress
+        K8s services are thought of as running within a cluster. But you’ll 
+        want to be able to access these services from the outside world. K8s has 
+        several components that facilitate this with varying degrees of simplicity 
+        and robustness, including NodePort and LoadBalancer, but the component 
+        with the most flexibility is Ingress. Ingress is an API that manages 
+        external access to a cluster’s services, typically via HTTP.
+
+    K8s Dashboard
+        One K8s component that helps you keep on top of all of these other 
+        components is Dashboard, a web-based UI with which you can deploy and 
+        troubleshoot apps and manage cluster resources. Dashboard isn’t 
+        installed by default, but adding it isn’t too much trouble.
+
+Control plane: The collection of processes that control Kubernetes nodes. This 
+is where all task assignments originate.
+
+Nodes: These machines perform the requested tasks assigned by the control plane.
+
+Pod: A group of one or more containers deployed to a single node. All 
+containers in a pod share an IP address, IPC, hostname, and other resources. 
+
+Replication controller:  This controls how many identical copies of a pod 
+should be running somewhere on the cluster.
+
+Service: This decouples work definitions from the pods. Kubernetes service proxies 
+automatically get service requests to the right pod— no matter where it moves in 
+the cluster or even if it’s been replaced.
+
+Kubelet: This service runs on nodes, reads the container manifests, and 
+ensures the defined containers are started and running.
+
+kubectl: The command line configuration tool for Kubernetes.
